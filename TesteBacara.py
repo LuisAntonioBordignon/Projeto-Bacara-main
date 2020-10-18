@@ -1,8 +1,7 @@
-#Encontrei dificuldades para a utilização do GitHub para monitorar a evolução do jogo, e acabei investimento meus esforços no jogo ao invés dessa configuração.
 aposta = int(input('Coloque suas apostas: '))
 #A aposta não deve ser maior que a quantidade de fichas que o jogador possui
 v = input('Quem será o vencedor? ')
-#o vencedor poderá ser o jogador, a banca ou o jogo terminará em empate
+#o vencedor poderá ser o jogador, o banco ou o jogo terminará em empate
 #mesa embaralha 52 cartas
 fichas = 100
 
@@ -25,29 +24,105 @@ while invalido:
 
         i = 0
         sorteio = []
-        lista_banca = []
+        lista_banco = []
         lista_jogador = []
         while i<4:           
             r = random.randint(0,51)
             print(cartas[r])  #retirar depois, apenas funcional para testes
             i = i + 1
             if i<2:
-                cartas.remove(cartas[r])
-                lista_banca.append(cartas[r])
+                lista_banco.append(cartas[r])
+                cartas.remove(cartas[r])                                                                                            
             else:
-                cartas.remove(cartas[r])
                 lista_jogador.append(cartas[r])
-           
-            #Pode criar uma função que sorteia uma carta e remove do baralho
-            #Como distribuir as cartas? Elas devem ser inseridas numa lista?
-        if lista_jogador[0]+lista_jogador[1]==8 or lista_jogador[0]+lista_jogador[1]==9 or lista_banca[0]+lista_banca[1]==8 or lista_banca[0]+lista_banca[1]==9:
+                cartas.remove(cartas[r])
+            
+        if sum(lista_jogador)==8 or sum(lista_jogador)==9 or sum(lista_banco)==8 or sum(lista_banco)==9:
             #Agora o jogo termina e as apostas são pagas
             print('Fim de jogo')
-            if v == jogador and lista_jogador[0]+lista_jogador[1]==8 or lista_jogador[0]+lista_jogador[1]==9:
-                fichas = fichas + aposta
-                print('Você possui {0} fichas'.format(fichas))
-            elif v == jogador and lista_banca[0]+lista_banca[1]==8 or lista_banca[0]+lista_banca[1]==9:
-                fichas = fichas - aposta
-                print('Você perdeu! Resta {0} fichas'.format(fichas))
+
+            #Agora, quem obter a soma mais perto de 9 ganha
+
+            if v == jogador:
+                if sum(lista_jogador) > sum(lista_banco):
+                    fichas = fichas + aposta
+                    print('Você possui {0} fichas'.format(fichas))
+                elif  sum(lista_jogador) < sum(lista_banco):
+                    fichas = fichas - aposta
+                    print('Você possui {0} fichas'.format(fichas))
+                elif sum(lista_jogador) == sum(lista_banco):
+                    print('Empate!')
+            
+            elif v == banco:
+                if  sum(lista_jogador) > sum(lista_banco):
+                    fichas = fichas - aposta
+                    print('Você possui {0} fichas'.format(fichas))
+                elif  sum(lista_jogador) <  sum(lista_banco):
+                    fichas = fichas + aposta
+                    print('Você possui {0} fichas'.format(fichas))
+                elif   sum(lista_jogador) <sum(lista_banco):
+                    print('Empate!')
+            
+            elif v == empate:
+                if  sum(lista_jogador) == sum(lista_banco):
+                    fichas = fichas + fichas*8
+                    
+                else:
+                    #Tenho que colocar alguma condição aqui ou o jogo termina?
+
+        elif sum(lista_jogador) < 8 or sum(lista_banco) < 8:
+            if sum(lista_jogador) == 6 or sum(lista_jogador) == 7:
+                #Não distribui novas cartas para o jogador
+            elif sum(lista_banco)==6 orsum(lista_banco)==7:
+                #Não distribui novas cartas para o banco
+            elif sum(lista_banco)<6:
+                r2 = random.randint(0,51)
+                lista_banco.append(cartas[r2])
+            elif sum(lista_jogador)<6:
+                r3 = random.randint(0,51)
+                lista_banco.append(cartas[r3])
+
+                #Eu acho que tem aque colocar mais coisa ali em cima
+
+        elif sum(lista_jogador) > 9:
+            #A soma será igual ao último algarismo do número, mas como fazer isso?
+        elif sum(lista_banco) > 9:
+             #A soma será igual ao último algarismo do número, mas como fazer isso?
+
+
+
+
+
+             lista_jogador[0]+lista_jogador[1]<6 
+            
+
+
+            
+
+            r2 = random.randint(0,51)
+            lista_banco.append(cartas[r2])
+            lista_jogador.append(cartas[r2])
+
+            
+            
+
+
+
+            
+
+                
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
     
             
