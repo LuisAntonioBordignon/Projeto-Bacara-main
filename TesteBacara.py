@@ -1,4 +1,3 @@
-#Olá
 #Encontrei dificuldades para a utilização do GitHub para monitorar a evolução do jogo, e acabei investimento meus esforços no jogo ao invés dessa configuração.
 aposta = int(input('Coloque suas apostas: '))
 #A aposta não deve ser maior que a quantidade de fichas que o jogador possui
