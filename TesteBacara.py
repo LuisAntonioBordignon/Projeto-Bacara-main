@@ -4,6 +4,7 @@
 
 #O vencedor poderá ser o jogador, o banco ou o jogo terminará em empate
 #Mesa embaralha 52 cartas
+
 fichas = 100
 
 import random
@@ -109,7 +110,7 @@ while invalido and fichas>0:
 
 
 
-        #Aqui, vemos quem ganhou o jogo
+        #Vamos ver quem ganhou!
             if v=='jogador':
                 if j>b:
                     fichas = fichas + aposta
@@ -142,8 +143,11 @@ while invalido and fichas>0:
                     fichas = fichas + 8*aposta
                     x = input('Parabéns, você ganhou e agora possui {0} fichas! Quer jogar de novo? '.format(fichas))
 
+    #Caso o jogador não queira mais jogar, o código abaixo encerará o loop do while e finalizará o jogo
     if x == 'não':
         invalido =  False
+    
+print('Fim de jogo!')
 
         
 
