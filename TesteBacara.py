@@ -12,12 +12,14 @@ import random
 
 print('Você possui 100 fichas!')
 
+cartas_mais_baralho = int(input('Você quer jogar com quantos baralhos? 1, 6 ou 8? '))
+
 A = 1
 J = 0
 Q = 0
 K = 0
 cartas = [A, 2, 3, 4, 5, 6, 7, 8, 9, 0, J, Q, K]
-cartas = cartas + cartas + cartas + cartas
+cartas = (cartas + cartas + cartas + cartas) * cartas_mais_baralho
 
 
 #Desde que o jogador aposte fichas possíveis, o jogo rodará dentro do while
@@ -107,7 +109,7 @@ while invalido and fichas>0:
 
 
 
-        #Vamos ver quem ganhou!
+        #Aqui, vemos quem ganhou o jogo
             if v=='jogador':
                 if j>b:
                     fichas = fichas + aposta
